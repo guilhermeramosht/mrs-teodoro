@@ -35,7 +35,7 @@ export default function Home() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (answer.toLowerCase() === "itália") {
+    if (answer.trim().match(/[Ii][Tt][ÁáAa][Ll][ÍíIi][Aa]/g)) {
       setSticker(rightAnswerSticker);
       setMessage(
         <span className="text-green-700">
