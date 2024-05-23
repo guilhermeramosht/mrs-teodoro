@@ -33,7 +33,8 @@ export default function Home() {
   const [sticker, setSticker] = React.useState<string>("");
   const [message, setMessage] = React.useState<React.ReactNode>(null);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     if (answer.toLowerCase() === "itália") {
       setSticker(rightAnswerSticker);
       setMessage(
@@ -50,7 +51,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen">
-      <div className="flex flex-col p-4 max-w-lg mx-auto flex-1 justify-between">
+      <div className="flex flex-col p-4 max-w-lg mx-auto flex-1">
         <div>
           <h2 className="text-3xl font-extrabold text-center mb-4">
             Finalmente chegou o grande dia! E o seu presente é... Espera: onde
@@ -81,7 +82,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col">
               <input
                 required
@@ -93,13 +94,13 @@ export default function Home() {
                 onChange={(e) => setAnswer(e.target.value)}
               />
             </div>
+            <button
+              className="p-4 bg-orange-500 rounded-full font-semibold w-full"
+              type="submit"
+            >
+              Responder
+            </button>
           </form>
-          <button
-            className="p-4 bg-orange-500 rounded-full font-semibold w-full"
-            onClick={handleSubmit}
-          >
-            Responder
-          </button>
         </div>
       </div>
     </main>
